@@ -16,9 +16,11 @@ namespace v0617
         int vy = rand.Next(-10,11);
         int score = 100;
         static Random rand = new Random();
+
         public Form1()
         {
             InitializeComponent();
+
             label1.Left = rand.Next(ClientSize.Width-label1.Width);
             label1.Top = rand.Next(ClientSize.Height-label1.Height);
         }
@@ -34,6 +36,7 @@ namespace v0617
             Point fpos = PointToClient(spos);
             //label3.Left = fpos.X - label3.Width / 2;
             //label3.Top = fpos.Y - label3.Height / 2;
+
             label1.Left += vx;
             label1.Top += vy;
             if (label1.Left < 0)
@@ -52,9 +55,14 @@ namespace v0617
             {
                 vy = -Math.Abs(vy);
             }
+
+
+
             score--;
             label2.Text = $"Socore{score}";
+
             label3.Text = $"{fpos.X},{fpos.Y}";
+
             if ((fpos.X>=label1.Left)
                 &&(fpos.X<label1.Right)
                 &&(fpos.Y>=label1.Top)
