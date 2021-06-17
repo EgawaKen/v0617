@@ -48,7 +48,7 @@ namespace v0617
 
         private void label1_Click(object sender, EventArgs e)
         {
-            timer1.Enabled=
+            timer1.Enabled = false;
         }
     }
 }
