@@ -14,6 +14,7 @@ namespace v0617
     {
         int vx = -10;
         int vy = -10;
+        int score = 100;
         public Form1()
         {
             InitializeComponent();
@@ -26,29 +27,48 @@ namespace v0617
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Point spos = MousePosition;
+            Point fpos = PointToClient(spos);
+            label3.Left = fpos.X - label3.Width / 2;
+            label3.Top = fpos.Y - label3.Height / 2;
             label1.Left += vx;
             label1.Top += vy;
             if (label1.Left < 0)
             {
-                vx = 10;
+                vx = Math.Abs(vx);
             }
             if (label1.Top < 0)
             {
-                vy = 10;
+                vy = Math.Abs(vy);
             }
             if (label1.Right > ClientSize.Width)
             {
-                vx = -10;
+                vx = -Math.Abs(vx);
             }
             if (label1.Bottom > ClientSize.Height)
             {
-                vy = -10;
+                vy = -Math.Abs(vy);
+            }
+            score--;
+            label2.Text = $"Socore{score}";
+            label3.Text = $"{fpos.X},{fpos.Y}";
+            if ((fpos.X>=label1.Left)
+                &&(fpos.X<label1.Right)
+                &&(fpos.Y>=label1.Top)
+                &&(fpos.Y<label1.Bottom))
+            {
+                timer1.Enabled = false;
             }
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
