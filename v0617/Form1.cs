@@ -12,12 +12,15 @@ namespace v0617
 {
     public partial class Form1 : Form
     {
-        int vx = -10;
-        int vy = -10;
+        int vx = rand.Next(-10,11);
+        int vy = rand.Next(-10,11);
         int score = 100;
+        static Random rand = new Random();
         public Form1()
         {
             InitializeComponent();
+            label1.Left = rand.Next(ClientSize.Width-label1.Width);
+            label1.Top = rand.Next(ClientSize.Height-label1.Height);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -29,8 +32,8 @@ namespace v0617
         {
             Point spos = MousePosition;
             Point fpos = PointToClient(spos);
-            label3.Left = fpos.X - label3.Width / 2;
-            label3.Top = fpos.Y - label3.Height / 2;
+            //label3.Left = fpos.X - label3.Width / 2;
+            //label3.Top = fpos.Y - label3.Height / 2;
             label1.Left += vx;
             label1.Top += vy;
             if (label1.Left < 0)
